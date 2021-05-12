@@ -2,7 +2,7 @@ export default class Conta {
     constructor(numero, titular) {
         this.numero = numero
         this.titular = titular
-        this.dataAbertura = Date()
+        this.dataAbertura = new Date()
         this.saldo = 0
     }
 
