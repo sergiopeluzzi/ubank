@@ -1,5 +1,34 @@
 {
     "data": [
-            
+        {
+            "id": 1,
+            "usuario": "sergiopeluzzi",
+            "senha": "123456",
+            "ativo": true
+        },
+        {
+            "id": 2,
+            "usuario": "laurianavaz",
+            "senha": "123456",
+            "ativo": true
+        },
+        {
+            "id": 3,
+            "usuario": "yasminvaz",
+            "senha": "123456",
+            "ativo": true
+        },
+        {
+            "id": 4,
+            "usuario": "estelavaz",
+            "senha": "123456",
+            "ativo": true
+        },
+        {
+            "id": 5,
+            "usuario": "sergioemanuel",
+            "senha": "123456",
+            "ativo": false
+        }
     ]
 }

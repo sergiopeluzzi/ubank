@@ -54,6 +54,33 @@ h3 {
     margin-bottom: 10px;
     padding: 10px;
     font-size: 18px;
-    border-radius: 8px;
-    border-color: #64B6B1;
+    outline: none;
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
+    border-bottom: solid 5px #64B6B1;
+}
+
+table {
+    border: 5px solid #64B6B1;
+}
+
+td {
+    border: 5px solid #64B6B1;
+    padding: 5px;
+    text-align: center;
+    background-color: #fff;
+}
+
+td.td-user {
+    text-align: left;
+}
+
+thead {
+    background-color: #64B6B1;
+}
+
+th {
+    padding: 5px;
+    width: 200px;
 }

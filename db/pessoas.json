@@ -1,5 +1,21 @@
 {
     "data": [
-                
+        {
+            "nome": "Sergio Henrique Martins Peluzzi",
+            "telefone": "(69) 9 8467-8083",
+            "endereço": "Rua França, 3054",
+            "tipo": "Pessoa Física",
+            "dataNascimento": "1985-11-25",
+            "sexo": "Masculino",
+            "cpf": "802.954.602-53"
+        },
+        {
+            "nome": "Scalare Marketing Digital",
+            "telefone": "(69) 9 8467-8083",
+            "endereço": "Rua França, 3054",
+            "tipo": "Pessoa Jurídica",
+            "dataNascimento": "2018-03-30",
+            "cnpj": "33.796.833/0001-60"
+        }               
     ]
 }
