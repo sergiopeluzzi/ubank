@@ -29,6 +29,14 @@
             "usuario": "sergioemanuel",
             "senha": "123456",
             "ativo": false
+        },
+        {
+            "id": 6,
+            "usuario": "hercules",
+            "senha": "123456",
+            "ativo": false
         }
-    ]
+
+    ],
+    "version": "0.0.1"
 }
