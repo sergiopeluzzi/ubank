@@ -46,11 +46,34 @@ function saveData() {
     req.onreadystatechange = function() {
         if(this.readyState == 4 && this.status == 200){
             db = JSON.parse(this.responseText)
-            console.log(db.data);
+            var dados = db.data
+            //console.log(db.data);
 
             var userEl = document.querySelector('#user')
             var passEl = document.querySelector('#pass')
             var passConfirmedEl = document.querySelector('#pass-confirmed')
+
+            if (userEl.value != '') {
+                if (passEl.value === passConfirmedEl.value) {
+                    var user = userEl.value
+                    var pass = passEl.value
+
+                    var max = 0
+                    dados.forEach(e => {
+                        if(e.id > max) {
+                            max = e.id
+                        }
+                    })
+                    
+                    var user = new Usuario(user, pass) 
+                    user.id = max + 1
+
+                    dados.push(user)
+                }
+            }
+            
+            console.log(dados);
+            //window.location.href = 'http://127.0.0.1:5500/UBank/pages/usuarios/listar.html'
 
         }
     }
@@ -65,6 +88,6 @@ if (tbEl) {
 }
 
 if (btnSalvarEl) {
-    btnSalvarEl.onclick = saveData()
+    btnSalvarEl.onclick = saveData
 }
 

@@ -1,7 +1,7 @@
 export default class Usuario {
-    constructor(user, pass, confirmPass) {
+    constructor(user, pass) {
         this.usuario = user
         this.senha = pass
-        this.senhaConfirmada = confirmPass
+        this.ativo = true
     }
 }
