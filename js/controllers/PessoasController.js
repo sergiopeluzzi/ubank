@@ -3,7 +3,7 @@ import Pessoa from '../classes/Pessoa.js'
 function getData() {
 
     var selectEl = document.querySelector('#pfisjur')
-    var selected = 'fisica'
+    var selected = 'juridica'
 
     //PESSOA FISICA SELECIONADA
     if (selected == 'fisica') {
@@ -95,8 +95,6 @@ function getData() {
     
 }
 
-function getUsers() {
 
-}
 
 getData()
