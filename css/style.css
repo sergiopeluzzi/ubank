@@ -72,7 +72,7 @@ td {
     background-color: #fff;
 }
 
-td.td-user {
+td.td-left {
     text-align: left;
 }
 
@@ -83,4 +83,15 @@ thead {
 th {
     padding: 5px;
     width: 200px;
+}
+
+li {
+    list-style: none;
+}
+
+#pfisjur {
+    width: 250px;
+    height: 40px;
+    margin-bottom: 10px;
+    color: #64B6B1;
 }

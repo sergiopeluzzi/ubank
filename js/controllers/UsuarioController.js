@@ -4,84 +4,95 @@ var tbEl = document.querySelector('#tb-usuarios')
 var btnSalvarEl = document.querySelector('#btn-salvar-usuario')
 
 function getData() {
-    var req = new XMLHttpRequest()
-    var db = ''
-    
-    req.onreadystatechange = function() {
-        if(this.readyState == 4 && this.status == 200){
-            db = JSON.parse(this.responseText)
-            var dados = db.data
 
-            var tbodyEl = document.querySelector('#tbody-usuarios')
+    var dados = JSON.parse(localStorage.getItem('usuarios')) || []
 
-            dados.forEach(e => {
-                var trEl = document.createElement('tr')
-    
-                var tdIdEl = document.createElement('td')
-                var tdUsuarioEl = document.createElement('td')
-                var tdAtivoEl = document.createElement('td')
-    
-                tdIdEl.innerHTML = e.id
-                tdUsuarioEl.innerHTML = e.usuario
-                tdUsuarioEl.className = 'td-user'
-                tdAtivoEl.innerHTML = e.ativo
-    
-                trEl.append(tdIdEl)
-                trEl.append(tdUsuarioEl)
-                trEl.append(tdAtivoEl)
-    
-                tbodyEl.append(trEl)
-            });
-        }
-    }
-    
-    req.open('GET', '../../db/usuarios.json', true)
-    req.send()
+    var tbodyEl = document.querySelector('#tbody-usuarios')
+
+    dados.forEach(e => {
+        var trEl = document.createElement('tr')
+
+        var tdIdEl = document.createElement('td')
+        var tdUsuarioEl = document.createElement('td')
+        var tdAtivoEl = document.createElement('td')
+
+        tdIdEl.innerHTML = e.id
+        tdUsuarioEl.innerHTML = e.usuario
+        tdUsuarioEl.className = 'td-left'
+        tdAtivoEl.innerHTML = e.ativo
+
+        trEl.append(tdIdEl)
+        trEl.append(tdUsuarioEl)
+        trEl.append(tdAtivoEl)
+
+        tbodyEl.append(trEl)
+    });
 }
 
 function saveData() {
-    var req = new XMLHttpRequest()
-    var db = ''
-    
-    req.onreadystatechange = function() {
-        if(this.readyState == 4 && this.status == 200){
-            db = JSON.parse(this.responseText)
-            var dados = db.data
-            //console.log(db.data);
+    var dados = JSON.parse(localStorage.getItem('usuarios')) || []
+    var errors = []
 
-            var userEl = document.querySelector('#user')
-            var passEl = document.querySelector('#pass')
-            var passConfirmedEl = document.querySelector('#pass-confirmed')
+    var userEl = document.querySelector('#user')
+    var passEl = document.querySelector('#pass')
+    var passConfirmedEl = document.querySelector('#pass-confirmed')
 
-            if (userEl.value != '') {
-                if (passEl.value === passConfirmedEl.value) {
-                    var user = userEl.value
-                    var pass = passEl.value
+    //Validator campo preenchido
+    if (userEl.value != '' && passEl.value != '') {
+        //Validator senha e senha confirmada
+        if (passEl.value === passConfirmedEl.value) {
+            var user = userEl.value
+            var pass = passEl.value
 
-                    var max = 0
-                    dados.forEach(e => {
-                        if(e.id > max) {
-                            max = e.id
-                        }
-                    })
+            //Validator usuario
+            dados.forEach(u => {
+                if(u.usuario == user) {
+                    var errorMsg = { 
+                        'code': '001',
+                        'txt': 'Usuário ' + user +' já existe'
+                    }
+
+                    console.log('teste');
                     
-                    var user = new Usuario(user, pass) 
-                    user.id = max + 1
+                    errors.push(errorMsg)
+                    return 
+                } 
+            })
 
-                    dados.push(user)
-                }
+            if (errors.length > 0) {
+                alert(errors[0].txt)
+                limpaCampos()
+                return
             }
-            
-            console.log(dados);
-            //window.location.href = 'http://127.0.0.1:5500/UBank/pages/usuarios/listar.html'
 
+            var user = new Usuario(user, pass)
+
+            //Loop para pegar o maxId do user
+            var max = 0
+            dados.forEach(user => {
+                if(user.id > max) {
+                    max = user.id
+                }
+            })
+           
+            user.id = max + 1
+
+            dados.push(user)
+            
+            localStorage.setItem('usuarios', JSON.stringify(dados))
+            
+            window.location.href = 'http://127.0.0.1:5500/pages/usuarios/listar.html'
         }
     }
-    
-    req.open('GET', '../../db/usuarios.json', true)
-    req.send()
 }
 
+function limpaCampos() {
+    var campos = document.querySelectorAll('input')
+    //Loop para setar o value = vazio nos inputs
+    campos.forEach(c => {
+        c.value = ''
+    })
+}
 
 if (tbEl) {
     getData()
