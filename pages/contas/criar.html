@@ -11,21 +11,23 @@
     <div id="main">
         <h1>Criar Conta</h1>
 
-        <div id="form">
+        <div id="form-contas">
             <input type="text" class="form-input" id="numero" placeholder="Numero">
-            <input type="text" class="form-input" id="titular" placeholder="titular">
-            <select name="" id="">
-                <option value="">1</option>
-                <option value="">2</option>
-                <option value="">3</option>
-                <option value="">4</option>
+            <select id="titular" class="form-input">
+                <option value="0">Selecione o cliente...</option>
+            </select>
+            <select id="tp-conta" class="form-input">
+                <option value="0">Selecione o tipo de conta...</option>
+                <option value="corrente">Conta Corrente</option>
+                <option value="poupanca">Conta Poupança</option>
             </select>
         </div>
 
         <div class="botoes">
-            <a href="#" class="btn-menu">Salvar</a>
+            <a href="#" class="btn-menu" id="btn-salvar-contas">Salvar</a>
             <a href="./listar.html" class="btn-menu">Voltar</a>
         </div>
     </div>
+    <script src="../../js/controllers/ContasController.js" type="module"></script>
 </body>
 </html>

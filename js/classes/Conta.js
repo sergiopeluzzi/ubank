@@ -4,6 +4,7 @@ export default class Conta {
         this.titular = titular
         this.dataAbertura = new Date()
         this.saldo = 0
+        this.ativo = true
     }
 
     depositar(quantia) {

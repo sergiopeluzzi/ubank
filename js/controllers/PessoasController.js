@@ -2,7 +2,7 @@ import PessoaFisica from '../classes/PessoaFisica.js'
 import PessoaJuridica from '../classes/PessoaJuridica.js'
 
 var tbEl = document.querySelector('#tb-pessoas')
-var form = document.querySelectorAll('#form-pessoas')
+var form = document.querySelector('#form-pessoas')
 var btnSalvarEl = document.querySelector('#btn-salvar-pessoa')
 
 var selected = 'fisica'
@@ -174,6 +174,8 @@ function saveData() {
 
         dados.push(pjuridica)
         localStorage.setItem('pessoa-juridica', JSON.stringify(dados))
+
+        window.location.href = 'http://127.0.0.1:5500/pages/pessoas/listar.html'
     }
 }
 

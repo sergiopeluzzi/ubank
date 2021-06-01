@@ -4,5 +4,6 @@ export default class ContaCorrente extends Conta {
     constructor(numero, titular) {
         super(numero, titular)
         this.taxa = 0.01
+        this.tipo = 'Conta Corrente'
     }
 }
